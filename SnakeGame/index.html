@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            position: relative;
+            background-color: black;
+            height: 100vh;
+        }
+        div {
+            width: 25px;
+            height: 25px;
+        }
+        .food{
+            z-index: 999;
+            border-radius: 100%;
+            background-color: red;
+            position: fixed;
+        }
+        .container > div {
+            position: absolute;
+            background-color: green;
+        }
+        .score{
+            position: fixed;
+            width: 200px;
+            height: 20px;
+            transform: translate(1px, 2px);
+            z-index: 999;
+            color: white;
+            font-size: 2rem;
+            font-family: sans-serif;
+        }
+        .gameover{
+            width: 400px;
+            height: 200px;
+            position: fixed;
+            color: red;
+            transform: translate(340px, 170px);
+            font-family: cursive;
+            font-size: 4rem;
+            font-weight: bold;
+        }
+    </style> 
+</head>
+<body>
+    <div class="score"></div>
+    <div class="gameover">
+        Game Over
+    </div>
+    <div class="food"></div>
+    <section class="container">
+        <div style="top: 0;"></div>
+        <div style="top: 25;"></div>
+        <div style="top: 50; background-color: lime;"></div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

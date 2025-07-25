@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .container{
+            background-color: red;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container > *{
+            width: 300px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        button{
+            background-color: red;
+            border: 2px solid white;
+            color: white;
+            cursor: pointer;
+            transition: all 1s;
+        }
+        button:hover{
+            background-color: white;
+            color: red;
+        }
+        .result{
+            width: 300px;
+            /* background-color: white; */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 2rem;
+            font-family: sans-serif;
+        }
+        option:hover{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="result"></div>
+        <select name="" id="">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <!-- <input type="text" name="" id=""> -->
+        <input type="number" min="-1000000000" min="1000000000">
+        <input type="number" min="-1000000000" min="1000000000">
+        <button style="width: 60px; font-size: 1.5rem;">=</button>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>

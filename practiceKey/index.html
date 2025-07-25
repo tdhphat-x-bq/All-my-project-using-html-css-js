@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .container{
+            height: 100vh;
+            background-color: purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 450px;
+            height: 150px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .box > div{
+            text-align: center;
+        }
+        .key, .key-code, .code{
+            background-color: purple;
+            width: 100px;
+            height: 50px;
+            color: white;
+        }
+        .key::before {
+            content: "key";
+            transform: translateY(-20px);
+            display: block;
+            color: black; /* màu chữ */
+            font-size: 14px;
+        }
+        .key-code::before {
+            content: "key-code";
+            transform: translateY(-20px);
+            display: block;
+            color: black; /* màu chữ */
+            font-size: 14px;
+        }
+        .code::before {
+            content: "code";
+            transform: translateY(-20px);
+            display: block;
+            color: black; /* màu chữ */
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="box">
+            <div class="key"></div>
+            <div class="key-code"></div>
+            <div class="code"></div>
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>

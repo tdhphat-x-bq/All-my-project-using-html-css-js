@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .container{
+            height: 100vh;
+            background-color: red;
+            opacity: 0.7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 290px;
+            /* height: 61px; */
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 5px 10px 5px;
+        }
+        .box > * {
+            margin-bottom: 10px;
+        }
+        input{
+            width: 240px;
+            height: 25px;
+        }
+        .box > div{
+            width: 226px;
+            height: 20px;
+            border-left: 3px solid red;
+            padding: 2px 5px 2px 5px;
+            display: flex;
+            justify-content: space-between;
+            font-family: sans-serif;
+        }
+        p:nth-child(2) {
+            opacity: 0.4;
+            cursor: pointer;
+        }
+        p:nth-child(2):hover{font-weight: bold;}
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="box">
+            <input type="text" placeholder="Enter a todo">
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>
