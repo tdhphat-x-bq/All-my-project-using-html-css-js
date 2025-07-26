@@ -69,11 +69,9 @@ function checkCollision() {
         update();
     }
 }
-createFood()
 
-setInterval(() => {
-    score.innerHTML = `Your Score: ${sc}`
-}, 3)
+createFood()
+setInterval(() => score.innerHTML = `Your Score: ${sc}`, 3)
 collision = setInterval(checkCollision, 5);
 run = setInterval(() => {
     for (let i = len - 1; i >= 0; i--) {   

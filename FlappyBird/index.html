@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            position: relative;
+            width: 3000px;
+            height: 340px;
+            display: flex;
+        }
+        .container  img {
+            width: 1030px;
+            height: 350px; 
+        }
+        .container > div { position: relative; }
+        .bird {
+            position: absolute;
+            z-index: 9999;
+            transition: 150ms linear;
+            transform-origin: 50% 50%;
+            top: 150px; left: 150px;
+
+        }
+        .score{
+            position: fixed;
+            width: 300px;
+            height: 20px;
+            transform: translate(1px, 2px);
+            z-index: 999;
+            color: white;
+            font-size: 2rem;
+            font-family: sans-serif;
+        }
+        .gameover{
+            width: 650px;
+            height: 200px;
+            position: fixed;
+            color: red;
+            transform: translate(200px, 170px);
+            font-family: cursive;
+            font-size: 4rem;
+            font-weight: bold;
+            z-index: 9999;
+        }
+    </style> 
+</head>
+<body>
+    <audio src="assets/swoosh.wav"></audio>
+    <audio src="assets/hit.wav"></audio>
+    <audio src="assets/point.wav"></audio>
+    <div class="score"></div>
+    <div class="gameover">
+        Press space to play
+    </div>
+    <img class="bird" src="assets/bird.png" alt="">
+    <section class="container">
+        <div><img src="assets/background.png" alt=""></div>
+        <div><img src="assets/background.png" alt=""></div>
+    </section>
+    <img src="assets/ground.png" alt="" width="1050px">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
