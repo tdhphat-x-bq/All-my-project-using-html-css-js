@@ -3,11 +3,11 @@ const score = document.querySelector(".score")
 const Gameover = document.querySelector(".gameover")
 const bird = document.querySelector(".bird")
 const sound = document.querySelectorAll("audio")
-const screen = container.children;
-
-let y = 0, degree = 0, step = 10, sc = 0, start = 0, end = 0, st = [0, 0], numOfPipe = 1;
-let down = null, collision = null, run = null, pipe = null, cnt = 0, except = -1;
+const div = document.querySelector(".container > div")
 const mark = new Map();
+
+let x = 2300, y = 0, degree = 0, sc = 0, end = 0, vel = 0, numOfPipe = 1;
+let screen = container.children, down = null, collision = null, run = null;
 
 function update() {
     bird.style.transform = `translateY(${y}px) rotate(${degree}deg)`
@@ -21,8 +21,7 @@ function gameover() {
     clearInterval(down);
     clearInterval(collision);
     clearInterval(run);
-    run = null; 
-    end = 1;
+    run = null; end = 1;
 }
 
 function updateStatus(deg) {
@@ -33,7 +32,7 @@ function updateStatus(deg) {
 }
 
 function checkCollision() {
-    let posBird = bird.getBoundingClientRect();
+    const posBird = bird.getBoundingClientRect();
     //bird vs ground and top
     let collied = !(posBird.top > 10 && posBird.bottom < 325);
     if (collied) {
@@ -41,42 +40,32 @@ function checkCollision() {
         return;
     }
     //bird vs pipe
-    for (let i = 0; i < 2; i++) {
-        const pipes = screen[i].querySelectorAll(".pipe")
-        if (i == except) continue;
-        for (let i = 0; i < pipes.length; i++) {
-            let posPipe = pipes[i].getBoundingClientRect();
-            collied = !(
-                posBird.top > posPipe.bottom || 
-                posBird.bottom < posPipe.top ||
-                posBird.left > posPipe.right ||
-                posBird.right < posPipe.left
-            );
-            if (collied) {
-                gameover();
-                break;
-            } 
-            else {
-                console.log(mark.get(i));
-                if (Math.floor(posBird.left) > Math.floor(posPipe.right)
-                && mark.get(i) == 1 && Math.floor(posPipe.right) > 0) {                    
-                    sc++; mark.set(i, 0);
-                    sound[2].currentTime = 0;
-                    sound[2].play();
-                }
-            }
+    const pipes = container.querySelectorAll(".pipe");    
+    for (let i = 0; i < pipes.length; i++) {                        
+        let posPipe = pipes[i].getBoundingClientRect();
+        collied = !(
+            posBird.top > posPipe.bottom || 
+            posBird.bottom < posPipe.top ||
+            posBird.left > posPipe.right ||
+            posBird.right < posPipe.left
+        );
+
+        if (collied) {
+            gameover();
+            break;
+        } else if (Math.floor(posBird.left) > Math.floor(posPipe.right) && mark.get(i) == 1) {  
+            console.log(i, mark.get(i));
+            sc++; mark.set(i, 0);
+            sound[2].currentTime = 0;
+            sound[2].play();
         }
     }
-    
 }
 
-function createPipe(obtacle) {
-    const imgs = screen[obtacle].querySelectorAll(".pipe")
-    imgs.forEach(img => img.remove());
-
+function createPipe() {
     numOfPipe++;
-    let kc = Math.floor((930 - numOfPipe * 50) / (numOfPipe - 1));
-    let push = 50;
+    let kc = Math.floor((950 - numOfPipe * 50) / (numOfPipe - 1));
+    let push = 100;
     for (let i = 0; i < numOfPipe; i++) {
         let h1 = Math.floor(Math.random() * 251);
         let h2 = 250 - h1;
@@ -90,48 +79,38 @@ function createPipe(obtacle) {
         pipe.style.position = "absolute";
         pipe.style.height = `${h1}px`;
         pipe.style.left = `${push}`;
-        screen[obtacle].append(pipe);
+        screen[1].append(pipe);
 
         const pipe1 = pipe.cloneNode(true);
         pipe1.src = "assets/pipe_bottom.png";
         pipe1.style.top = `${350 - h2}`;
         pipe1.style.height = `${h2}px`;
-        screen[obtacle].append(pipe1);
+        screen[1].append(pipe1);
 
         push += kc + 50; 
     }   
+    const posBird = bird.getBoundingClientRect();
     const pipes = container.querySelectorAll(".pipe");
     for (let i = 0; i < pipes.length; i += 2) {
-        mark.set(i, 1); mark.set(i+1, 0);
+        let posPipe = pipes[i].getBoundingClientRect();
+        mark.set(i, 0), mark.set(i+1, 0);
+        if (posPipe.left > posBird.right) mark.set(i, 1);
     }
 }
 
 function gamePlay() {
-    let tmp = -1;
-    st[0] -= 10; st[1] -= 10;
-    if (st[1] <= -2060) {
-        // screen[1].style.display = "none";
-        screen[1].style.transition = "0s all";
-        screen[1].style.transform = "translateX(-10px)"
-        st[1] = -10; tmp = 1; except = 1;
-    }
-    if (st[0] <= -1030) {
-        screen[0].style.transition = "0s all";
-        screen[0].style.transform = "translateX(1020px)";
-        st[0] = 1020; tmp = 0; except = 0;
-    }
-    if (tmp != -1) createPipe(tmp);
-    setTimeout(() => {
-        screen[1].style.display = "block"
-    }, 20)
-    for (let i = 0; i < 2; i++) {
-        screen[i].style.transition = "50ms linear";
-        screen[i].style.transform = `translateX(${st[i]}px)`;
-    }
+    vel -= 10;
+    if (vel % 1160 == 0) {        
+        const d = div.cloneNode(true);
+        container.children[0].remove();
+        container.append(d);
+        container.lastChild.style.left = `${x}`;
+        x += 1150; createPipe();
+    } else container.style.transform = `translateX(${vel}px)`;
 }
 
 setInterval(() => score.innerHTML = `Your Score: ${sc}`, 3)
-collision = setInterval(checkCollision, 5);
+collision = setInterval(checkCollision, 20);
 
 window.addEventListener("keydown", (e) => {
     if ([" ", "ArrowRight"].includes(e.key)) e.preventDefault();
@@ -142,13 +121,11 @@ window.addEventListener("keydown", (e) => {
         updateStatus(-45);
         clearInterval(down);
         down = null; 
-        if (run == null) run = setInterval(gamePlay, 70);
+        if (run == null) run = setInterval(gamePlay, 50);
     }
 })
 window.addEventListener("keyup", (e) => {
     if (e.key == " " && down == null && !end) {
-        down = setInterval(() => {
-            updateStatus(45);
-        }, 50);
+        down = setInterval(() => updateStatus(45), 50);
     }
 })

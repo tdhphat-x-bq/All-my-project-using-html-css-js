@@ -11,16 +11,15 @@
             box-sizing: border-box;
         }
         .container{
-            position: relative;
             width: 3000px;
             height: 340px;
             display: flex;
         }
         .container  img {
-            width: 1030px;
+            width: 1150px;
             height: 350px; 
         }
-        .container > div { position: relative; }
+        .container > div { position: absolute; }
         .bird {
             position: absolute;
             z-index: 9999;
@@ -63,7 +62,7 @@
     <img class="bird" src="assets/bird.png" alt="">
     <section class="container">
         <div><img src="assets/background.png" alt=""></div>
-        <div><img src="assets/background.png" alt=""></div>
+        <div style="left: 1150;"><img src="assets/background.png" alt=""></div>
     </section>
     <img src="assets/ground.png" alt="" width="1050px">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
