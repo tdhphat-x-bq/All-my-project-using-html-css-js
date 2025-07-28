@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{background-color: black;}
+.container{
+    z-index: 9999;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: 100vw;
+    mix-blend-mode: luminosity;
+}
+.box{
+    color: white;
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.603);
+    box-shadow: 0px 0px 10px white;
+    padding: 40px 30px;
+}
+.box > * {
+    margin-bottom: 40px;
+}
+form{
+    width: 240px;
+    /* background-color: red; */
+}
+form > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 5px 2px;
+}
+.fa-eye{
+    cursor: pointer;
+}
+input{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 90%;
+}
+input:focus{
+    outline: none;
+}
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+button {
+    background-color: black;
+    color: white;
+    width: 240px;
+    padding: 10px 0px;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 500ms linear;
+}
+button:hover{
+    background-color: white;
+    color: black;
+}
