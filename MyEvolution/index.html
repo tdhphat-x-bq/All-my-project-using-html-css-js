@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  <title>phat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      position: relative;
+    }
+    .container{
+      background-color: black;
+      height: 100vh;
+      position: relative;
+    }
+    .box{
+      position: absolute;
+      top: 150px;
+      left: 430px;
+      width: 190px;
+      height: 230px;
+      overflow: hidden;
+      /* border: 2px solid red; */
+    }
+    .main{
+      position: relative;
+      display: flex;
+      width: 2470px;
+      height: 230px;
+      transition: 1s linear;
+      /* transform: translateX(-190px); */
+    }
+    img{
+      position: absolute;
+      top: 0;
+      width: 190px;
+      height: 230px;
+      flex-shrink: 0;
+    } 
+    body > div {
+      position: fixed;
+      z-index: 999;
+      transition: 300ms linear;
+    }
+    body > div:nth-child(1) { box-shadow: 0px 0px 10px 2px red; }
+    body > div:nth-child(2) { box-shadow: 0px 0px 10px 2px blue; }
+    body > div:nth-child(3) { box-shadow: 0px 0px 10px 2px yellow; }
+    body > div:nth-child(4) { box-shadow: 0px 0px 10px 2px green; }
+  </style>
+</head>
+<body>
+  <div style="height: 236px; width: 3px; background-color: red; transform: translate(427px, 147px);"></div>
+  <div style="height: 236px; width: 3px; background-color: blue; transform: translate(617px, 147px);"></div>
+  <div style="width: 193px; height: 3px; background-color: yellow; transform: translate(427px, 147px);"></div>
+  <div style="width: 193px; height: 3px; background-color: green; transform: translate(427px, 380px);"></div>
+  <section class="container">
+    <div class="box">
+        <div class="main">
+          <!-- <img src="assets/p.jpg" alt=""/>  -->
+        </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>phat</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            background-color: rgba(128, 128, 128, 0.096);
+        }
+        .head > img{
+            width: 100vw;
+        }
+        .scroll > img{
+            height: 95vh;
+        }
+        .body{
+            display: flex;
+            justify-content: space-between;
+        }
+        .main{
+            color: black;
+            z-index: 9999;
+            /* background-color: #fff; */
+            font-family: sans-serif;
+            width: 800px;
+            margin-top: 5px;
+        }
+        h4{
+            /* background-color: rgba(128, 128, 128, 0.057); */
+            margin-bottom: 5px;
+        }
+        .main > div {
+            background-color: #fff;
+            padding: 20px;
+            height: 90vh;
+        }
+        .main img{
+            width: 70vw;
+            margin-bottom: 5px;
+        }
+        .in4{
+            /* height: 50vh; */
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px 0px 1px black;
+            font-weight: bold;
+            padding: 20px 40px;
+            font-size: 0.8rem;
+        }
+        .in4 > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .in4 > div > div{
+            background-color: rgba(128, 128, 128, 0.27);
+            margin-top: 5px;
+        }
+        #sp > div {
+            background-color: white;
+        }
+        #sp{
+            align-items: start;
+        }
+        .in4 > div:nth-last-child(1) {
+            font-weight: normal;
+            justify-content: start;
+            padding: 0px 0px;
+        }
+    </style> 
+</head>
+<body>
+    <section class="container">
+        <div class="head"><img src="assets/bg.jpg" alt=""></div>
+        <div class="body">
+            <div class="scroll"><img src="assets/scroll.jpg" alt=""></div>
+            <div class="main">
+                <h4>Thông tin đăng ký nguyện vọng của thí sinh</h4>
+                <div>
+                    <img src="assets/tmp.jpg" alt="">
+                    <div class="in4">
+                        <div>
+                            Thứ tự nguyện <br> vọng <br>
+                            <div style="padding: 2px 42px;">0</div>
+                        </div>
+                        <div id="sp">
+                            <div>Trường: </div>
+                            <div>Mã xét tuyển: </div>
+                            <div>Trình độ đào tạo: </div>
+                            <div>Chương trình đào tạo: </div>
+                            <div>Trạng thái: </div>
+                            <div>Mô tả: </div>
+                            <div>Ghi chú: </div>
+                            <div>Cảnh báo: </div>
+                        </div>
+                        <div id="sp" style="width: 200px;">
+                        </div>
+                        <div id="sp" style="position: absolute; transform: translateX(360px);">
+                            <div>TDHP-TRƯỜNG ĐẠI HỌC ĐỜI - ĐH ĐẠI MINH</div>
+                            <div>191107-Tỷ phú</div>
+                            <div>Đại học</div>
+                            <div>Chương trình đại trà</div>
+                            <div style="color: green;">Đã ghi nhận NV-NV đã được thanh toán</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
